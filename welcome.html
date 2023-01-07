@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/index.css">
     <link rel="stylesheet" type="text/css" href="assets/welcome.css">
+    
+    <audio id="welcome-sound" src="assets/windows-xp-startup-sound.mp3"></audio>
 </head>
 
 <body>
     <div>welcome</div>
+    <!-- play welcome sound on load -->
+    <script>
+        document.getElementById('welcome-sound').play();
+    </script>
+    
 </body>
 </html>

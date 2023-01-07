@@ -12,7 +12,6 @@
 
 A replication of the awesome Windows-XP in your browser made by using only the web tools and no library. All rights reserved to <a href="https://www.microsoft.com/en-in">Microsoft&reg;</a>
 
-
 <h2 align="center">Features</h2>
 
 <table>
@@ -65,31 +64,6 @@ A replication of the awesome Windows-XP in your browser made by using only the w
   </tr>
 </table>
 
-
-## Contributing
-
-### Step 1
-- :fork_and_knife: Fork this repository
-
-### Step 2
-- :dancers: Clone this repo to your local machine using ```git clone https://github.com/faisalakhtar/windows-xp.git```
-
-### Step 3
-- **HACK AWAY** :hammer: :hammer: :hammer:
-
-### Step 4
-- :repeat: Create a pull request using https://github.com/faisalakhtar/windows-xp/compare/
-
-
-## License
-
-[![License](https://img.shields.io/badge/license-Mozilla%20Public%20License%20Version%202.0-blue?logo=mozilla)](LICENSE)
-
-Full license: [Mozilla Public License V2.0](LICENSE)
-
-Translation: _Ofcourse you can use this for you project! Just make sure to say where you got this from :)_
-
-
 ## Acknowledgement
 
-This simulation of the windows-XP is made purely for educational purpose and not for any kind of personal profiteering. I don't own it neither do I have any links to it at the moment. All rights reserved to windows-XP are to Microsoft &copy;.
+I would like to acknowledge Faisal Akhtar as the creator of this theme, which can be found on his GitHub repository at https://github.com/faisalAkhtar/windows-xp. I have made modifications to the code and added a startup sound to this theme. However, I have no ownership or affiliation with this theme. All rights reserved for Windows XP belong to Microsoft &copy;.
