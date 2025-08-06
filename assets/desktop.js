@@ -1,39 +1,46 @@
-let time = document.querySelector(".time");
-time.innerHTML = new Intl.DateTimeFormat("en-IN", {
-	hour: "numeric",
-	minute: "numeric",
-	hour12: true,
-}).format(new Date());
-time.setAttribute(
-	"title",
-	new Intl.DateTimeFormat("en-IN", {
-		hour: "numeric",
-		minute: "numeric",
-		hour12: true,
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-	}).format(new Date())
-);
+// Initialize and update the clock
+const updateClock = () => {
+	const time = document.querySelector(".time");
+	const now = new Date();
 
-let timeSetter = setInterval(() => {
-	time.innerHTML = new Intl.DateTimeFormat("en-IN", {
+	// Update the time display
+	time.innerHTML = new Intl.DateTimeFormat("en", {
 		hour: "numeric",
 		minute: "numeric",
 		hour12: true,
-	}).format(new Date());
+	}).format(now);
+
+	// Update the tooltip with full date
 	time.setAttribute(
 		"title",
-		new Intl.DateTimeFormat("en-IN", {
-			hour: "numeric",
-			minute: "numeric",
-			hour12: true,
+		new Intl.DateTimeFormat("en", {
+			weekday: "long",
 			year: "numeric",
 			month: "long",
 			day: "numeric",
-		}).format(new Date())
+			hour: "numeric",
+			minute: "numeric",
+			hour12: true,
+		}).format(now)
 	);
-}, 60000);
+
+	// Calculate milliseconds until the next minute
+	const nextMinute = new Date(now);
+	nextMinute.setMinutes(now.getMinutes() + 1);
+	nextMinute.setSeconds(0);
+	nextMinute.setMilliseconds(0);
+	const delay = nextMinute - now;
+
+	// Schedule next update at the start of the next minute
+	setTimeout(() => {
+		updateClock();
+		// Start regular interval once synchronized
+		setInterval(updateClock, 60000);
+	}, delay);
+};
+
+// Start the clock
+updateClock();
 
 document.querySelector(".desktop").onclick = function () {
 	document.querySelectorAll(".icon").forEach((e) => {
