@@ -191,6 +191,10 @@ function handleShutdown() {
 }
 
 function performShutdown() {
+	// Play Windows shutdown sound
+	const shutdownSound = new Audio('assets/windows-xp-shutdown.mp3');
+	shutdownSound.play().catch(e => console.log('Could not play shutdown sound:', e));
+	
 	// Create shutdown screen
 	document.body.innerHTML = `
 		<div class="shutdown-screen">
