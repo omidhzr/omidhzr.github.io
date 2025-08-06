@@ -240,6 +240,225 @@ textarea {
     transform: translateY(4px);
 }
 
+.start-menu {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    width: 320px;
+    height: 400px;
+    background: url('start_menu.png') no-repeat center center;
+    background-size: contain;
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+}
+
+.start-menu-left {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    width: 140px;
+    height: 280px;
+}
+
+.start-menu-right {
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    width: 140px;
+    height: 280px;
+}
+
+.start-menu .menu-item {
+    cursor: pointer;
+    padding: 8px 12px;
+    margin: 2px 0;
+    color: #003d7a;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    font-family: Tahoma, sans-serif;
+}
+
+.start-menu-left .menu-item {
+    color: #000;
+}
+
+.start-menu .menu-item:hover {
+    background-color: rgba(49, 106, 197, 0.8);
+    color: white;
+}
+
+.start-menu .menu-item img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.start-menu-footer {
+    position: absolute;
+    bottom: 2px;
+    right: 6px;
+    left: auto;
+}
+
+.shutdown-button {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background: url('shutdown.png') no-repeat;
+    background-position: 0 0;
+    background-size: 32px 64px;
+    border: none;
+    padding: 0;
+    transition: background-position 0.05s ease;
+}
+
+.shutdown-button:hover {
+    background-position: 0 -32px;
+}
+
+/* Start button states */
+.startnormal {
+    background: radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat;
+}
+
+.starthovered {
+    background: radial-gradient(circle, #6ebc66 0%, #4c974c 100%) center/cover no-repeat !important;
+}
+
+.startclicked {
+    background: radial-gradient(circle, #4c974c 0%, #3c873c 100%) center/cover no-repeat !important;
+    box-shadow: 0px 2px 5px #79ce71 inset, 4px 0 8px #3f8cf3 !important;
+}
+
+/* Shutdown Dialog Styles */
+.shutdown-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.shutdown-content {
+    background: #ece9d8;
+    border: 2px outset #ece9d8;
+    width: 400px;
+    padding: 0;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+.shutdown-header {
+    background: linear-gradient(to right, #0054e3, #0054e3);
+    color: white;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #316ac5;
+}
+
+.shutdown-message {
+    padding: 20px;
+    color: #000;
+}
+
+.shutdown-options {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px 20px;
+}
+
+.shutdown-option {
+    cursor: pointer;
+    padding: 15px;
+    border: 1px solid transparent;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    border-radius: 2px;
+}
+
+.shutdown-option:hover {
+    background: rgba(49, 106, 197, 0.1);
+    border-color: rgba(49, 106, 197, 0.3);
+}
+
+.shutdown-option img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+}
+
+.shutdown-buttons {
+    text-align: right;
+    padding: 15px;
+    border-top: 1px solid #999;
+    background: #f0f0f0;
+}
+
+.shutdown-buttons button {
+    margin-left: 8px;
+    padding: 6px 20px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    background: #ece9d8;
+    border: 1px outset #ece9d8;
+    cursor: pointer;
+}
+
+.shutdown-buttons button:hover {
+    background: #ddd;
+}
+
+.shutdown-buttons button:active {
+    border: 1px inset #ece9d8;
+}
+
+/* Shutdown Screen Styles */
+.shutdown-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0054e3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.shutdown-text {
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.shutdown-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .opened-tabs {
     width: calc(100% - 225px);
     float: left;

@@ -52,14 +52,23 @@
     </div>
 
     <div class="taskbar">
-        <div class="start-button"><img src="assets/logo.svg"> start</div>
-        <!-- <div class="start-menu">
-            <div class="menu-item"><img src="assets/documents.png"> Omid Hazara</div>
-            <div class="menu-item"><img src="assets/computer.png"> My Computer</div>
-            <div class="menu-item"><img src="assets/network.png"> My Network</div>
-            <div class="menu-item"><img src="assets/notepad.png"> ReadME.txt</div>
-            <div class="menu-item"><img src="assets/recycle.png"> Recycle Bin</div>
-        </div> -->
+        <div class="start-button" id="startbutton">
+            <span id="startbuttongraphic" class="startnormal"><img src="assets/logo.svg"> start</span>
+        </div>
+        <div class="start-menu" id="startmenu" style="display: none;">
+            <div class="start-menu-left">
+                <div class="menu-item" onclick="window.open('https://omidhazara.github.io/')"><img src="assets/documents.png"> Omid Hazara</div>
+                <div class="menu-item"><img src="assets/notepad.png"> ReadME.txt</div>
+            </div>
+            <div class="start-menu-right">
+                <div class="menu-item" onclick="window.open('https://github.com/omidhzr/')"><img src="assets/computer.png"> My Computer</div>
+                <div class="menu-item" onclick="window.open('https://www.linkedin.com/in/omidhazara/')"><img src="assets/network.png"> My Network</div>
+                <div class="menu-item"><img src="assets/recycle.png"> Recycle Bin</div>
+            </div>
+            <div class="start-menu-footer">
+                <div class="shutdown-button" id="shutdown-button" onclick="handleShutdown()"></div>
+            </div>
+        </div>
         <div class="opened-tabs">
             <div class="open-tab" onclick="window.open('https://omidhazara.github.io/')"><img src="assets/documents.png"> Omid Hazara</div>
             <div class="open-tab" onclick="window.open('https://github.com/omidhzr/')"><img src="assets/computer.png"> My Computer</div>

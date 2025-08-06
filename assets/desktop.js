@@ -1,3 +1,8 @@
+// Helper function for startmenu.js compatibility
+function getElement(id) {
+    return document.getElementById(id);
+}
+
 // Initialize and update the clock
 const updateClock = () => {
 	const time = document.querySelector(".time");
@@ -151,3 +156,80 @@ function dragWindow(elmnt) {
 		document.onmousemove = null;
 	}
 }
+
+// Shutdown functionality
+function handleShutdown() {
+	// Hide the start menu first
+	doStartMenu();
+	doStartMenuButtonOut();
+	
+	// Create a shutdown dialog
+	const shutdownDialog = document.createElement('div');
+	shutdownDialog.className = 'shutdown-dialog';
+	shutdownDialog.innerHTML = `
+		<div class="shutdown-content">
+			<div class="shutdown-header">Turn off computer</div>
+			<div class="shutdown-message">What do you want the computer to do?</div>
+			<div class="shutdown-options">
+				<div class="shutdown-option" onclick="performShutdown()">
+					<img src="assets/logo.svg" alt="shutdown">
+					<span>Turn off</span>
+				</div>
+				<div class="shutdown-option" onclick="performRestart()">
+					<img src="assets/logo.svg" alt="restart">
+					<span>Restart</span>
+				</div>
+			</div>
+			<div class="shutdown-buttons">
+				<button onclick="cancelShutdown()">Cancel</button>
+				<button onclick="performShutdown()">OK</button>
+			</div>
+		</div>
+	`;
+	
+	document.body.appendChild(shutdownDialog);
+}
+
+function performShutdown() {
+	// Create shutdown screen
+	document.body.innerHTML = `
+		<div class="shutdown-screen">
+			<div class="shutdown-text">Windows is shutting down...</div>
+			<div class="shutdown-spinner"></div>
+		</div>
+	`;
+	
+	// After 3 seconds, show "safe to turn off" message
+	setTimeout(() => {
+		document.body.innerHTML = `
+			<div class="shutdown-screen">
+				<div class="shutdown-text">It's now safe to turn off your computer.</div>
+			</div>
+		`;
+	}, 3000);
+}
+
+function performRestart() {
+	// Create restart screen
+	document.body.innerHTML = `
+		<div class="shutdown-screen">
+			<div class="shutdown-text">Windows is restarting...</div>
+			<div class="shutdown-spinner"></div>
+		</div>
+	`;
+	
+	// After 3 seconds, reload the page
+	setTimeout(() => {
+		location.reload();
+	}, 3000);
+}
+
+function cancelShutdown() {
+	const dialog = document.querySelector('.shutdown-dialog');
+	if (dialog) {
+		dialog.remove();
+	}
+}
+
+// Initialize start menu functionality
+registerStartMenuObjects();
