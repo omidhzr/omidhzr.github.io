@@ -1,6 +1,6 @@
 // Helper function for startmenu.js compatibility
 function getElement(id) {
-    return document.getElementById(id);
+	return document.getElementById(id);
 }
 
 // Initialize and update the clock
@@ -116,7 +116,7 @@ document.querySelector(".note-pad").ondblclick = function () {
 };
 
 document.querySelector("textarea").value =
-	"Hello World!\n\nFeatures:\n- Desktop icons are clickable. Double clicking them takes you to some of my links (github, twitter, portfolio).\n- Time in system-tray is your system's time.\n- This window is draggable, closable, minimizable and maximizable. Try it.\n- The opened tabs in taskbar also take you to my links, same as the icons.\n______________________________\n\nThe code is on github. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.\n______________________________\n\nDo follow me on github (@omidhzr). Open 'My Computer' and 'My Network' to go to these links.\n";
+	"Hello World!\n\nFeatures:\n- Desktop icons are clickable. Double clicking them takes you to some of my links (github, twitter, portfolio).\n- Time in system-tray is your system's time.\n- This window is draggable, closable, minimizable and maximizable. Try it.\n- The opened tabs in taskbar also take you to my links, same as the icons.\n______________________________\n\nThe code is on github. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.\n______________________________\n\nDo follow me on github (@omidhzr). Open 'My Computer' and 'My Network' to go to these links.\n\nThis is a personal, non-commercial fan project. Windows XP is a trademark of Microsoft Corporation. All rights belong to their respective owners.\n\n";
 
 dragWindow(document.querySelector(".window"));
 function dragWindow(elmnt) {
@@ -162,10 +162,10 @@ function handleShutdown() {
 	// Hide the start menu first
 	doStartMenu();
 	doStartMenuButtonOut();
-	
+
 	// Create a shutdown dialog
-	const shutdownDialog = document.createElement('div');
-	shutdownDialog.className = 'shutdown-dialog';
+	const shutdownDialog = document.createElement("div");
+	shutdownDialog.className = "shutdown-dialog";
 	shutdownDialog.innerHTML = `
 		<div class="shutdown-content">
 			<div class="shutdown-header">Turn off computer</div>
@@ -186,15 +186,17 @@ function handleShutdown() {
 			</div>
 		</div>
 	`;
-	
+
 	document.body.appendChild(shutdownDialog);
 }
 
 function performShutdown() {
 	// Play Windows shutdown sound
-	const shutdownSound = new Audio('assets/windows-xp-shutdown.mp3');
-	shutdownSound.play().catch(e => console.log('Could not play shutdown sound:', e));
-	
+	const shutdownSound = new Audio("assets/windows-xp-shutdown.mp3");
+	shutdownSound
+		.play()
+		.catch((e) => console.log("Could not play shutdown sound:", e));
+
 	// Create shutdown screen
 	document.body.innerHTML = `
 		<div class="shutdown-screen">
@@ -202,7 +204,7 @@ function performShutdown() {
 			<div class="shutdown-spinner"></div>
 		</div>
 	`;
-	
+
 	// After 3 seconds, show "safe to turn off" message
 	setTimeout(() => {
 		document.body.innerHTML = `
@@ -221,7 +223,7 @@ function performRestart() {
 			<div class="shutdown-spinner"></div>
 		</div>
 	`;
-	
+
 	// After 3 seconds, reload the page
 	setTimeout(() => {
 		location.reload();
@@ -229,7 +231,7 @@ function performRestart() {
 }
 
 function cancelShutdown() {
-	const dialog = document.querySelector('.shutdown-dialog');
+	const dialog = document.querySelector(".shutdown-dialog");
 	if (dialog) {
 		dialog.remove();
 	}
