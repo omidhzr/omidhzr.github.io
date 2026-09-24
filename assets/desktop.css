@@ -88,8 +88,8 @@ body {
     background: #ffffff;
 
     transition-duration: 0.1s;
-    /* let it be hidden on load */
-    opacity: 0;
+    /* hidden on load; opened from its icon, taskbar tab or start menu */
+    display: none;
     
 }
 
@@ -212,7 +212,6 @@ textarea {
 .pdf-window {
     display: none;
     flex-direction: column;
-    opacity: 1;
     overflow: hidden;
     max-width: 760px;
     max-height: 900px;

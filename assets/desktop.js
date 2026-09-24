@@ -61,23 +61,39 @@ document.querySelectorAll(".icon").forEach((icon) => {
 	};
 });
 
-document.querySelector(".max").onclick = function () {
-	document.querySelector(".window").classList.toggle("maximized");
+// ReadME window (Notepad)
+const readmeWindow = document.querySelector(".window:not(.pdf-window)");
+const readmeTab = document.querySelector(".readme");
+
+function openReadme() {
+	readmeWindow.style.display = "block";
+	readmeWindow.classList.remove("minimized");
+	readmeTab.classList.add("active");
+	focusWindow(readmeWindow);
+}
+
+readmeWindow.querySelector(".max").onclick = function () {
+	readmeWindow.classList.toggle("maximized");
 };
 
-document.querySelector(".min").onclick = function () {
-	document.querySelector(".readme").classList.toggle("active");
-	document.querySelector(".window").classList.toggle("minimized");
+readmeWindow.querySelector(".min").onclick = function () {
+	readmeWindow.classList.add("minimized");
+	readmeTab.classList.remove("active");
 };
 
-document.querySelector(".readme").onclick = function () {
-	document.querySelector(".readme").classList.toggle("active");
-	document.querySelector(".window").classList.toggle("minimized");
+readmeTab.onclick = function () {
+	if (readmeWindow.style.display !== "block" || readmeWindow.classList.contains("minimized")) {
+		openReadme();
+	} else {
+		readmeWindow.classList.add("minimized");
+		readmeTab.classList.remove("active");
+	}
 };
 
-document.querySelector(".cls").onclick = function () {
-	document.querySelector(".readme").style.display = "none";
-	document.querySelector(".window").style.display = "none";
+readmeWindow.querySelector(".cls").onclick = function () {
+	readmeWindow.style.display = "none";
+	readmeWindow.classList.remove("maximized");
+	readmeTab.classList.remove("active");
 };
 
 document.querySelector(".omid-hazara").ondblclick = function () {
@@ -105,11 +121,7 @@ document.querySelector(".note-pad").ondblclick = function () {
 	setTimeout(() => {
 		this.classList.remove("selected");
 	}, 2);
-	document.querySelector(".readme").style.display = "initial";
-	document.querySelector(".window").style.display = "initial";
-	document.querySelector(".window").style.opacity = "1";
-	document.querySelector(".readme").classList.add("active");
-	document.querySelector(".window").classList.remove("minimized");
+	openReadme();
 };
 
 document.querySelector("textarea").value =
@@ -282,7 +294,8 @@ function performRestart() {
 
 	// After 3 seconds, reload the page
 	setTimeout(() => {
-		location.reload();
+		// reload the whole page (not just the desktop iframe) so the boot sequence plays again
+		window.top.location.reload();
 	}, 3000);
 }
 
