@@ -30,6 +30,10 @@
             <img src="assets/pdf-file.png">
             <div class="icon-name">My CV.pdf</div>
         </div>
+        <div class="icon minesweeper">
+            <img src="assets/minesweeper.svg">
+            <div class="icon-name">Minesweeper</div>
+        </div>
         <div class="icon recycle-bin">
             <img src="assets/recycle.png">
             <div class="icon-name">Recycle Bin</div>
@@ -80,6 +84,41 @@
         <iframe class="pdf-viewer" title="Omid Hazara CV"></iframe>
     </div>
 
+    <div class="window mine-window">
+        <div class="title-bar">
+            <div><img src="assets/minesweeper.svg"> Minesweeper</div>
+            <div class="controls">
+                <button class="cls"></button>
+                <button class="max" disabled></button>
+                <button class="min"></button>
+            </div>
+        </div>
+        <div class="menu-bar mine-menubar">
+            <span class="mine-menu">Game
+                <div class="mine-dropdown">
+                    <div data-action="new">New<kbd>F2</kbd></div>
+                    <hr>
+                    <div data-level="beginner">Beginner</div>
+                    <div data-level="intermediate">Intermediate</div>
+                    <div data-level="expert">Expert</div>
+                    <hr>
+                    <div data-action="marks">Marks (?)</div>
+                    <hr>
+                    <div data-action="best">Best Times...</div>
+                    <hr>
+                    <div data-action="exit">Exit</div>
+                </div>
+            </span>
+            <span class="mine-menu">Help
+                <div class="mine-dropdown">
+                    <div data-action="about">About Minesweeper...</div>
+                </div>
+            </span>
+        </div>
+        <div class="mine-body"><canvas class="mine-canvas"></canvas></div>
+        <div class="mine-dialog-layer"></div>
+    </div>
+
     <div class="taskbar">
         <div class="start-button" id="startbutton">
             <span id="startbuttongraphic" class="startnormal"><img src="assets/start-flag.svg" alt=""> start</span>
@@ -89,6 +128,7 @@
                 <div class="menu-item" onclick="window.open('https://omidhzr.github.io/')"><img src="assets/documents.png"> Omid Hazara</div>
                 <div class="menu-item" onclick="openReadme(); doStartMenu(); doStartMenuButtonOut();"><img src="assets/notepad.png"> ReadME.txt</div>
                 <div class="menu-item" onclick="openCv(); doStartMenu(); doStartMenuButtonOut();"><img src="assets/pdf-file.png"> My CV.pdf</div>
+                <div class="menu-item" onclick="openMinesweeper(); doStartMenu(); doStartMenuButtonOut();"><img src="assets/minesweeper.svg"> Minesweeper</div>
             </div>
             <div class="start-menu-right">
                 <div class="menu-item" onclick="window.open('https://github.com/omidhzr/')"><img src="assets/computer.png"> My Computer</div>
@@ -104,6 +144,7 @@
             <div class="open-tab" onclick="window.open('https://github.com/omidhzr/')"><img src="assets/computer.png"> My Computer</div>
             <div class="open-tab" onclick="window.open('https://www.linkedin.com/in/omidhazara/')"><img src="assets/network.png"> My Network</div>
             <div class="open-tab cv-tab"><img src="assets/adobe-reader.png"> My CV.pdf</div>
+            <div class="open-tab mine-tab" style="display: none;"><img src="assets/minesweeper.svg"> Minesweeper</div>
             <div class="open-tab readme"><img src="assets/notepad.png"> ReadME.txt</div>
         </div>
 
@@ -111,5 +152,6 @@
     </div>
 
     <script src="assets/desktop.js"></script>
+    <script src="assets/minesweeper.js"></script>
 </body>
 </html>

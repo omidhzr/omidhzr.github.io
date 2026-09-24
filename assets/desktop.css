@@ -617,3 +617,199 @@ body.dragging iframe {
         display: none;
     }
 }
+
+/* ---------- Minesweeper ---------- */
+.mine-window {
+    /* size to the game; auto would be capped by left: 50% and break centring */
+    width: max-content;
+    height: auto;
+    max-width: none;
+    max-height: none;
+}
+
+.mine-window.minimized {
+    overflow: hidden;
+}
+
+/* Minesweeper can't be maximized, like the original */
+.mine-window .max:disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.mine-body {
+    padding: 0 3px;
+    line-height: 0;
+}
+
+.mine-canvas {
+    display: block;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.mine-menubar {
+    position: relative;
+    z-index: 2;
+}
+
+.mine-menu {
+    position: relative;
+    cursor: default;
+}
+
+.menu-bar .mine-menu.open {
+    background-color: #316ac5;
+    border-color: #316ac5;
+    color: #ffffff;
+}
+
+.mine-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    min-width: 180px;
+    padding: 2px;
+    background: #ffffff;
+    border: 1px solid #aca899;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+    color: #000000;
+    font-size: 13px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.mine-menu.open .mine-dropdown {
+    display: block;
+}
+
+.mine-dropdown div {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 20px 0 22px;
+}
+
+.mine-dropdown div:hover {
+    background: #316ac5;
+    color: #ffffff;
+}
+
+.mine-dropdown div.checked::before {
+    content: "\2713";
+    position: absolute;
+    left: 6px;
+    font-weight: bold;
+}
+
+.mine-dropdown hr {
+    border: none;
+    border-top: 1px solid #aca899;
+    margin: 3px 1px;
+}
+
+.mine-dropdown kbd {
+    font: inherit;
+}
+
+/* XP-style dialogs (Best Times, name entry, About) */
+.mine-dialog-layer {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+
+.mine-dialog-layer.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.xp-dialog {
+    width: 320px;
+    padding: 0 3px 3px;
+    background: #ece9d8;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: inset -1px -1px #00138c, inset 1px 1px #0831d9, inset -2px -2px #001ea0, inset 2px 2px #166aee, inset -3px -3px #003bda, inset 3px 3px #0855dd, 3px 3px 10px rgba(0, 0, 0, 0.45);
+    color: #000000;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.xp-dialog-title {
+    margin: 0 -3px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.xp-dialog-body {
+    padding: 14px 12px 8px;
+}
+
+.xp-dialog-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 4px 12px 12px;
+}
+
+.xp-button {
+    min-width: 75px;
+    height: 23px;
+    padding: 0 10px;
+    border: 1px solid #003c74;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #ffffff, #ecebe5 86%, #d8d0c4);
+    font: 13px segoe-ui, sans-serif;
+    cursor: pointer;
+}
+
+.xp-button:hover {
+    box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+
+.xp-button:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.mine-best td {
+    padding: 2px 12px 2px 0;
+}
+
+.mine-name p {
+    margin: 0 0 10px;
+}
+
+.mine-name input {
+    width: 100%;
+    padding: 3px 4px;
+    border: 1px solid #7f9db9;
+    font: inherit;
+}
+
+.mine-about {
+    display: flex;
+    gap: 12px;
+}
+
+.mine-about img {
+    width: 40px;
+    height: 40px;
+}
+
+.mine-about p {
+    margin: 8px 0;
+}
+
+.mine-about small {
+    color: #555555;
+}
