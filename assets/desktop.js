@@ -186,11 +186,12 @@ function dragWindow(elmnt) {
 	function dragging(e) {
 		e = e || window.event;
 		e.preventDefault();
+		if (elmnt.classList.contains("maximized")) return;
 
 		pos3 = e.clientX;
 		pos4 = e.clientY;
 
-		elmnt.classList.add("dragging");
+		document.body.classList.add("dragging");
 		document.onmouseup = stopDragging;
 		document.onmousemove = draggedWindow;
 	}
@@ -209,7 +210,7 @@ function dragWindow(elmnt) {
 	}
 
 	function stopDragging() {
-		elmnt.classList.remove("dragging");
+		document.body.classList.remove("dragging");
 		document.onmouseup = null;
 		document.onmousemove = null;
 	}
