@@ -37,11 +37,8 @@ const updateClock = () => {
 	const delay = nextMinute - now;
 
 	// Schedule next update at the start of the next minute
-	setTimeout(() => {
-		updateClock();
-		// Start regular interval once synchronized
-		setInterval(updateClock, 60000);
-	}, delay);
+	// (each call re-schedules itself, so no setInterval is needed)
+	setTimeout(updateClock, delay);
 };
 
 // Start the clock
