@@ -208,6 +208,62 @@ textarea {
     resize: none;
 }
 
+.pdf-window {
+    display: none;
+    flex-direction: column;
+    opacity: 1;
+    overflow: hidden;
+    max-width: 760px;
+    max-height: 900px;
+    /* centre in the area above the 32px taskbar */
+    top: calc(50% - 16px);
+    height: calc(100% - 92px);
+}
+
+.pdf-toolbar {
+    flex-shrink: 0;
+    height: 28px;
+    margin: 0 2px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(180deg, #fafaf7, #e3e2d7);
+    border-bottom: 1px solid #939498;
+}
+
+.pdf-toolbar a {
+    font-family: calibri, monospace;
+    font-size: 13px;
+    color: black;
+    text-decoration: none;
+    padding: 2px 8px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+.pdf-toolbar a:hover {
+    border-color: #99D1FF;
+    background-color: #99D1FF77;
+}
+
+.pdf-viewer {
+    /* override the global iframe rule in index.css */
+    position: static;
+    height: auto;
+    flex: 1;
+    min-height: 0;
+    width: calc(100% - 4px);
+    margin: 0 2px;
+    border: none;
+    background: #808080;
+}
+
+/* keep the iframe from swallowing mouse events while dragging */
+.window.dragging .pdf-viewer {
+    pointer-events: none;
+}
+
 .taskbar {
     background-color: #245EDC;
     background: linear-gradient(to bottom, #245EDC 0%, #3f8cf3 9%, #245EDC 18%, #245EDC 92%, #1941A5 100%) center/cover no-repeat;

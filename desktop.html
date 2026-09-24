@@ -26,6 +26,10 @@
             <img src="assets/notepad.png">
             <div class="icon-name">ReadME.txt</div>
         </div>
+        <div class="icon my-cv">
+            <img src="assets/pdf-file.png">
+            <div class="icon-name">My CV.pdf</div>
+        </div>
         <div class="icon recycle-bin">
             <img src="assets/recycle.png">
             <div class="icon-name">Recycle Bin</div>
@@ -51,6 +55,31 @@
         <textarea></textarea>
     </div>
 
+    <div class="window pdf-window">
+        <div class="title-bar">
+            <div><img src="assets/adobe-reader.png"> Omid-Hazara-CV.pdf - Adobe Reader</div>
+            <div class="controls">
+                <button class="cls"></button>
+                <button class="max"></button>
+                <button class="min"></button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Document</span>
+            <span>Tools</span>
+            <span>Window</span>
+            <span>Help</span>
+        </div>
+        <div class="pdf-toolbar">
+            <a href="assets/Omid-Hazara-CV.pdf" download>Save a Copy</a>
+            <a href="assets/Omid-Hazara-CV.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+        </div>
+        <iframe class="pdf-viewer" title="Omid Hazara CV"></iframe>
+    </div>
+
     <div class="taskbar">
         <div class="start-button" id="startbutton">
             <span id="startbuttongraphic" class="startnormal"><img src="assets/logo.svg"> start</span>
@@ -59,6 +88,7 @@
             <div class="start-menu-left">
                 <div class="menu-item" onclick="window.open('https://omidhazara.github.io/')"><img src="assets/documents.png"> Omid Hazara</div>
                 <div class="menu-item"><img src="assets/notepad.png"> ReadME.txt</div>
+                <div class="menu-item" onclick="openCv(); doStartMenu(); doStartMenuButtonOut();"><img src="assets/pdf-file.png"> My CV.pdf</div>
             </div>
             <div class="start-menu-right">
                 <div class="menu-item" onclick="window.open('https://github.com/omidhzr/')"><img src="assets/computer.png"> My Computer</div>
@@ -73,6 +103,7 @@
             <div class="open-tab" onclick="window.open('https://omidhazara.github.io/')"><img src="assets/documents.png"> Omid Hazara</div>
             <div class="open-tab" onclick="window.open('https://github.com/omidhzr/')"><img src="assets/computer.png"> My Computer</div>
             <div class="open-tab" onclick="window.open('https://www.linkedin.com/in/omidhazara/')"><img src="assets/network.png"> My Network</div>
+            <div class="open-tab cv-tab"><img src="assets/adobe-reader.png"> My CV.pdf</div>
             <div class="open-tab readme active"><img src="assets/notepad.png"> ReadME.txt</div>
         </div>
 

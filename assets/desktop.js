@@ -118,14 +118,70 @@ document.querySelector(".note-pad").ondblclick = function () {
 document.querySelector("textarea").value =
 	"Hello World!\n\nFeatures:\n- Desktop icons are clickable. Double clicking them takes you to some of my links (github, twitter, portfolio).\n- Time in system-tray is your system's time.\n- This window is draggable, closable, minimizable and maximizable. Try it.\n- The opened tabs in taskbar also take you to my links, same as the icons.\n______________________________\n\nThe code is on github. Star the repository if you liked this. Contributions to this repository are welcome and appreciated.\n______________________________\n\nDo follow me on github (@omidhzr). Open 'My Computer' and 'My Network' to go to these links.\n\nThis is a personal, non-commercial fan project. Windows XP is a trademark of Microsoft Corporation. All rights belong to their respective owners.\n\n";
 
-dragWindow(document.querySelector(".window"));
+// CV window (Adobe Reader)
+const cvWindow = document.querySelector(".pdf-window");
+const cvTab = document.querySelector(".cv-tab");
+const cvViewer = cvWindow.querySelector(".pdf-viewer");
+let topZIndex = 1;
+
+function focusWindow(win) {
+	win.style.zIndex = ++topZIndex;
+}
+
+function openCv() {
+	// Load the PDF only when first opened
+	if (!cvViewer.getAttribute("src")) {
+		cvViewer.src = "assets/Omid-Hazara-CV.pdf#view=FitH";
+	}
+	cvWindow.style.display = "flex";
+	cvWindow.classList.remove("minimized");
+	cvTab.classList.add("active");
+	focusWindow(cvWindow);
+}
+
+document.querySelector(".my-cv").ondblclick = function () {
+	setTimeout(() => {
+		this.classList.remove("selected");
+	}, 2);
+	openCv();
+};
+
+cvTab.onclick = function () {
+	if (cvWindow.style.display !== "flex" || cvWindow.classList.contains("minimized")) {
+		openCv();
+	} else {
+		cvWindow.classList.add("minimized");
+		cvTab.classList.remove("active");
+	}
+};
+
+cvWindow.querySelector(".max").onclick = function () {
+	cvWindow.classList.toggle("maximized");
+};
+
+cvWindow.querySelector(".min").onclick = function () {
+	cvWindow.classList.add("minimized");
+	cvTab.classList.remove("active");
+};
+
+cvWindow.querySelector(".cls").onclick = function () {
+	cvWindow.style.display = "none";
+	cvWindow.classList.remove("maximized");
+	cvTab.classList.remove("active");
+};
+
+document.querySelectorAll(".window").forEach((win) => {
+	win.addEventListener("mousedown", () => focusWindow(win));
+	dragWindow(win);
+});
+
 function dragWindow(elmnt) {
 	var pos1 = 0,
 		pos2 = 0,
 		pos3 = 0,
 		pos4 = 0;
 
-	document.querySelector(".title-bar").onmousedown = dragging;
+	elmnt.querySelector(".title-bar").onmousedown = dragging;
 
 	function dragging(e) {
 		e = e || window.event;
@@ -134,6 +190,7 @@ function dragWindow(elmnt) {
 		pos3 = e.clientX;
 		pos4 = e.clientY;
 
+		elmnt.classList.add("dragging");
 		document.onmouseup = stopDragging;
 		document.onmousemove = draggedWindow;
 	}
@@ -152,6 +209,7 @@ function dragWindow(elmnt) {
 	}
 
 	function stopDragging() {
+		elmnt.classList.remove("dragging");
 		document.onmouseup = null;
 		document.onmousemove = null;
 	}
