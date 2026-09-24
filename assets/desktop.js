@@ -87,7 +87,7 @@ document.querySelector(".omid-hazara").ondblclick = function () {
 	setTimeout(() => {
 		this.classList.remove("selected");
 	}, 2);
-	window.open("https://omidhazara.github.io/");
+	window.open("https://omidhzr.github.io/");
 };
 
 document.querySelector(".my-computer").ondblclick = function () {
